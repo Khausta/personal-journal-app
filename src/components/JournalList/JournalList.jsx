@@ -1,12 +1,12 @@
 import './JournalList.css';
 import CardButton from '../CardButton/CardButton';
 import JournalItem from '../JournalItem/JournalItem';
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useRef } from 'react';
 import { UserContext } from '../../context/user.context';
 
 
 function JournalList({ items, setItem }) {
-
+	const sliderRef = useRef(null);
 	const { userId } = useContext(UserContext);
 	
 	const sortItems = (a, b) => {
@@ -27,19 +27,28 @@ function JournalList({ items, setItem }) {
 		return <p>Записей нет</p>;
 	}
 	
+
+	const prev = () => sliderRef.current.scrollLeft -= 250;
+	const next = () => sliderRef.current.scrollLeft += 250;
 	
 
 	return <>
-		{filtredItems
-			.map(el => (
-				<CardButton key={el.id} onClick={() => setItem(el)}>
-					<JournalItem
-						title={el.title}
-						date={el.date}
-						text={el.text}
-					/>
-				</CardButton>
-			))}
+	<div className='slider'>
+		<div className='prev' onClick={prev}></div>
+		<div className='slider-block' ref={sliderRef}>
+			{filtredItems
+				.map(el => (
+					<CardButton key={el.id} onClick={() => setItem(el)}>
+						<JournalItem
+							title={el.title}
+							date={el.date}
+							text={el.text}
+						/>
+					</CardButton>
+				))}
+		</div>
+		<div className='next' onClick={next}></div>
+	</div>
 	</>;
 	
 }

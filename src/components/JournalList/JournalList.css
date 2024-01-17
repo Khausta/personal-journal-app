@@ -3,3 +3,63 @@
     flex-direction: column;
     gap: 30px;
 }
+
+.prev, .next {
+    display: none;
+}
+
+.slider-block {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+
+    .slider {
+        position: relative;
+    }
+    
+    .slider-block {
+        flex-direction: row;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+    }
+
+    .prev, .next {
+        position: absolute;
+        display: block;
+        width: 6vw;
+        height: 6vw;
+        background: #312EB5;
+        top: 50%;
+      
+        border-radius: 100%;
+        z-index: 1;
+        cursor: pointer;
+        background-position: center;
+        background-size: 60%;
+        background-repeat: no-repeat;
+        
+        
+    }
+
+    .prev {
+        left: 0;
+        background-image: url('/slider-prev.svg');
+        transform: translate(-50%, -50%);
+    }
+
+    .next {
+        right: 0;
+        background-image: url('/slider-next.svg');
+        transform: translate(50%, -50%);
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    
+}
+
