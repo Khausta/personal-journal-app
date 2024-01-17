@@ -8,6 +8,8 @@
     display: none;
 }
 
+
+
 .slider-block {
     display: flex;
     gap: 30px;
@@ -58,6 +60,10 @@
     }
 
     ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-navigation {
         display: none;
     }
     

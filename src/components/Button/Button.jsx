@@ -1,11 +1,11 @@
-import './Button.css';
+
 import { memo } from 'react';
+import styles from './Button.module.css';
 
 function Button({ children, onClick }) {
-	console.log('Button');
 	
 	return (
-		<button onClick={onClick} className='button accent'>{children}</button>
+		<button onClick={onClick} className={`${styles['button']} ${styles['accent']}`}>{children}</button>
 	);
 }
   
